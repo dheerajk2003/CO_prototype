@@ -1,1 +1,2 @@
 pip install pypdf2
+pip install requests
