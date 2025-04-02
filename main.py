@@ -5,7 +5,7 @@ pdf_path = "/home/dheeraj/Downloads/CAP6206 HANDOUTS-Student.pdf"
 syllabus = extract_text_from_pdf(pdf_path, "syllabus", "textbook", "text book")
 type_details = extract_text_from_pdf(pdf_path, "course outcome", "program specific outcome")
 type_info = ["understanding", "apply", "analyze"]
-type_num = 0
+type_num = 2
 
 content = {
     "contents": {
@@ -20,5 +20,5 @@ content = {
 
 
 test = GetTest(content)
-wtr = open("data.txt", 'w')
+wtr = open("data.md", 'w')
 wtr.write(test)
