@@ -1,2 +1,3 @@
 pip install pypdf2
 pip install requests
+pip install openpyxl

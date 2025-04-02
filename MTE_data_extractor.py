@@ -8,13 +8,13 @@ students = [[]]
 rollNo_col = column_index_from_string("B")
 N_value_col = [4, 6, 8, 10, 12, 14, 16, 18]
 
-for row_index in range(6, 7):  # worksheet.max_row + 1):
+for row_index in range(6, 176):
     i = 0
+    # extracts individual cell values
     rollNo = worksheet.cell(row=row_index, column=rollNo_col).value
+    # for loop helps getting all the values mentioned in the list above
     N_value = [worksheet.cell(row=row_index, column=col).value for col in N_value_col]
 
-    students[i].append(N_value)
+    students[i].append(N_value)  # to insert data in a 2d list
     print(students)
     i += 1
-    # var = [rollNo, N_value]
-    # print(f"N value of Roll no  {var[0]}  = {var[1]}")
