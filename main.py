@@ -1,12 +1,15 @@
 from GetTest import GetTest
+from Temp import GetTest as GetTestv2, initClient
 from SyllabusExtractor import extract_text_from_pdf
 from MTE_data_extractor import extract_data
 from MTE_data_extractor import get_worst
 
+geminiClient = initClient()
 
-students = extract_data("test.xlsm", "MTE", [6, 176], [4, 6, 8, 10, 12, 14, 16, 18])
+
+students = extract_data("data/test.xlsm", "MTE", [6, 176], [4, 6, 8, 10, 12, 14, 16, 18])
 worst = get_worst(students)
-pdf_path = "/home/dheeraj/Downloads/CAP6205 Course Handout OS.pdf"
+pdf_path = "data/CAP6205 Course Handout OS.pdf"
 syllabus = extract_text_from_pdf(pdf_path, "syllabus", "textbook", "text book")
 type_details = extract_text_from_pdf(pdf_path, "course outcome", "program specific outcome")
 type_info = ["understanding", "apply", "analyze"]
@@ -27,6 +30,6 @@ content = {
 
 
 
-test = GetTest(content)
+test = GetTestv2(geminiClient, content)
 wtr = open("data.md", 'w')
 wtr.write(test)

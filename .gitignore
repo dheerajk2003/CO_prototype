@@ -1,4 +1,4 @@
 .env
 _pycache_
-data.md
-test.xlsm
+data
+.venv
