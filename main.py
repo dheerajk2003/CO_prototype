@@ -31,5 +31,5 @@ content = {
 
 
 test = GetTestv2(geminiClient, content)
-wtr = open("data.md", 'w')
+wtr = open("data/data.md", 'w')
 wtr.write(test)

@@ -1,3 +1,5 @@
 pypdf2
 requests
 openpyxl
+google-genai
+python-dotenv
