@@ -21,8 +21,4 @@ def extract_text_from_pdf(pdf_path, start, end, s_end=""):
     text = text[start_idx:end_idx]
     return text
 
-# pdf_path = '/home/dheeraj/Downloads/CAP6206 HANDOUTS-Student.pdf'
-# pdf_text = extract_text_from_pdf(pdf_path, "syllabus", "textbook", "text book")
-# print(pdf_text)
-# pdf_text = extract_text_from_pdf(pdf_path, "course outcome", "program specific outcome")
-# print(pdf_text)
+

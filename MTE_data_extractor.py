@@ -24,33 +24,11 @@ def extract_data(file_path, worksheet_name, rowList, colList, ):
 def get_worst(students):
     performance = []
     for i in range(len(students)):
-        performance.append([0,0])
-        a = round(sum(students[i][0:3]) / 30 * 100, 2)
-        b = round(sum(students[i][3:7]) / 40 * 100, 2)
-        c = (students[i][7]) * 10
-
-        if(a < b and a < c):
-            performance[i][0] = 0
-            performance[i][1] = a
-        elif(b < a and b < c):
-            performance[i][0] = 1
-            performance[i][1] = b
-        else:
-            performance[i][0] = 2
-            performance[i][1] = c
+        performance.append([0,0,0])
+        performance[i][0] = round(sum(students[i][0:3]) / 30 * 100, 2)
+        performance[i][1] = round(sum(students[i][3:7]) / 40 * 100, 2)
+        performance[i][2] = (students[i][7]) * 10
 
 
     return performance
 
-
-# students = extract_data("test.xlsm", "MTE", [6, 20], [4, 6, 8, 10, 12, 14, 16, 18])
-
-# print(get_worst(students))
-# print(students[0], students[-1])
-
-
-
-
-#[4, 6, 8, 10, 12, 14, 16, 18]
-
-# 6, 176
