@@ -1,11 +1,12 @@
-from GetTest import GetTest
-from Temp import GetTest as GetTestv2, initClient
+from GetTest import Gemini, Llama, GPT, DeepSeek
 from SyllabusExtractor import extract_text_from_pdf
 from MTE_data_extractor import extract_data
 from MTE_data_extractor import get_worst
 
-geminiClient = initClient()
-
+geminiClient = Gemini()
+llamaClient = Llama()
+gptClient = GPT()
+deepseekClient = DeepSeek()
 
 students = extract_data("data/test.xlsm", "MTE", [6, 176], [4, 6, 8, 10, 12, 14, 16, 18])
 performance = get_worst(students)
@@ -34,6 +35,18 @@ if(performance[roll_no][0] > 65 and performance[roll_no][1] > 65 and performance
     
 else:
     print("co1 = "+str(performance[roll_no][0]) + " co2 = " + str(performance[roll_no][1]) + " co3 = " + str(performance[roll_no][2]))
-    test = GetTestv2(geminiClient, content)
-    wtr = open("data/data.md", 'w')
+    test = geminiClient.GetTest(content)
+    wtr = open("data/data_gemini.md", 'w')
     wtr.write(test)
+    wtr.close()
+
+    test = llamaClient.GetTest(content)
+    wtr = open("data/data_llama.md", 'w')
+    wtr.write(test)
+    wtr.close()
+
+    
+    test = deepseekClient.GetTest(content)
+    wtr = open("data/data_deekseek.md", 'w')
+    wtr.write(test)
+    wtr.close()

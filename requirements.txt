@@ -2,4 +2,7 @@ pypdf2
 requests
 openpyxl
 google-genai
+groq
+openai
+krutrim-cloud
 python-dotenv
