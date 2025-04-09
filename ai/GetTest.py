@@ -28,7 +28,7 @@ class Llama:
                     "content": str(body),
                     }
                 ],
-                model="llama-3.3-70b-versatile",
+                model="meta-llama/llama-4-scout-17b-16e-instruct",
                 )
         return res.choices[0].message.content
     
@@ -54,5 +54,7 @@ class DeepSeek:
         res = self.client.chat.completions.create(model="DeepSeek-R1", messages=[
             {"role" : "user", "content": str(body)}
         ])
-
-        return res.choices[0].message.content
+        res = res.choices[0].message.content.rsplit("</think>")
+        testContent = res[-1]
+        thinkingData = '\n'.join(res[0:-1]).removeprefix("<think>")
+        return (thinkingData, testContent)

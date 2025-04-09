@@ -11,6 +11,6 @@ pip install -r requirements.txt
 | Name | Size/Version | Pricing (Per M) | Provider |
 | ---- | ------------ | ------- | -------- |
 | Gemini | 2.5 Exp | 0 | Google |
-| Llama | 3.3-70b-versatile | $0.59 (IN) \| $0.79 (OUT) | Groq |
+| Llama | 4 Scout (17B) | $0.59 (IN) \| $0.79 (OUT) | Groq |
 | Deepseek | R1 (671b) | ₹11 (IN) \| ₹45 (OUT) | Ola Krutrim |
 | GPT | O3 mini | $1.10 (IN) \| $4.40 (OUT) | Azure |
