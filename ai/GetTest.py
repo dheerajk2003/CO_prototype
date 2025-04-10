@@ -11,6 +11,16 @@ class Gemini:
         self.client = genai.Client(api_key=os.getenv("GEMINI_KEY"))
         print("[Info] Successfully created Google (Gemini) Client")
 
+    def getMapping(self, examPaper):
+
+        context = "From the given test "+examPaper+" extract the CO number from every question"
+        context += "And return only the co numbers without (CO) as a string "
+        context += "eg:- 1 1 1 2 2 1 2 3 "
+
+        cos = self.GetTest(context)
+        map = cos.strip().split(" ")
+        mapping = [int(x) for x in map]
+        return mapping
 
     def GetTest(self,body):
         res = self.client.models.generate_content(model="gemini-2.5-pro-exp-03-25", contents=str(body))

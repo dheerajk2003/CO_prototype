@@ -3,15 +3,32 @@ from SyllabusExtractor import extract_text_from_pdf
 from MTE_data_extractor import extract_data
 from MTE_data_extractor import get_worst
 
-aiHandler = handleAI()
+#modificatoin
+from ai.GetTest import Gemini
+from Clustering import Clustering
+c = Clustering()
+gemini = Gemini()
 
+# aiHandler = handleAI()
+
+
+# data form excel
 students = extract_data("data/test.xlsm", "MTE", [6, 176], [4, 6, 8, 10, 12, 14, 16, 18])
-performance = get_worst(students)
+#data form exam paper for co mapping
+paper = extract_text_from_pdf("data/CA2106_OS__MTE-24.pdf")
+
+co_map = gemini.getMapping(paper)
+print(co_map)
+performance = get_worst(students, co_map)
+
+# data from handout
 pdf_path = "data/CAP6205 Course Handout OS.pdf"
 syllabus = extract_text_from_pdf(pdf_path, "syllabus", "textbook", "text book")
 type_details = extract_text_from_pdf(pdf_path, "course outcome", "program specific outcome")
 type_info = ["understanding", "apply", "analyze"]
 
+# clustering
+print(c.clustering(performance))
 
 roll_no = int(input("Enter the roll no of student that you want to get test for: ")) - 1
 
@@ -25,4 +42,5 @@ if(performance[roll_no][0] > 65 and performance[roll_no][1] > 65 and performance
     
 else:
     print("co1 = "+str(performance[roll_no][0]) + " co2 = " + str(performance[roll_no][1]) + " co3 = " + str(performance[roll_no][2]))
-    aiHandler.GenerateResponses(content)
+    # aiHandler.GenerateResponses(content)
+    print(gemini.GetTest(content))
