@@ -1,13 +1,15 @@
 import PyPDF2
 
-def extract_text_from_pdf(pdf_path, start, end, s_end=""):
+def extract_text_from_pdf(pdf_path, start="", end="", s_end=""):
     with open(pdf_path, 'rb') as file:
         reader = PyPDF2.PdfReader(file)
         text = ''
         for page in reader.pages:
             text += page.extract_text() + '\n'
-    if(end == "" or end == None):
-        end = len(text) - 1
+
+    if(end == "" or start == ""):
+        return text
+        
     end_idx = 0
     start_idx = 0
     try:
