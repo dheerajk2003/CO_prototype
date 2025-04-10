@@ -6,7 +6,8 @@ def extract_text_from_pdf(pdf_path, start, end, s_end=""):
         text = ''
         for page in reader.pages:
             text += page.extract_text() + '\n'
-
+    if(end == "" or end == None):
+        end = len(text) - 1
     end_idx = 0
     start_idx = 0
     try:
