@@ -6,4 +6,3 @@ groq
 openai
 krutrim-cloud
 python-dotenv
-collections
