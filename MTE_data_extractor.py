@@ -21,26 +21,13 @@ def extract_data(file_path, worksheet_name, rowList, colList, ):
 
     return students
 
-def get_worst(students, mapping):
-    
-    length = max(mapping)
-    count = [0]*length
-    for i in range(len(mapping)):
-        count[mapping[i]-1] += 1
+
+def get_worst(students):
     performance = []
     for i in range(len(students)):
-
-        performance_temp = [0]*length
-        for j in range(len(mapping)):
-            performance_temp[mapping[j] - 1] += students[i][j]
-        for j in range(length):
-            performance_temp[j] = round(performance_temp[j] / count[j] * 10, 2)
-
-        performance.append(performance_temp)
-        # performance[i][0] = round(sum(students[i][0:3]) / 30 * 100, 2)
-        # performance[i][1] = round(sum(students[i][3:7]) / 40 * 100, 2)
-        # performance[i][2] = (students[i][7]) * 10
-
+        performance.append([0, 0, 0])
+        performance[i][0] = round(sum(students[i][0:3]) / 30 * 100, 2)
+        performance[i][1] = round(sum(students[i][3:7]) / 40 * 100, 2)
+        performance[i][2] = (students[i][7]) * 10
 
     return performance
-
