@@ -3,6 +3,7 @@ from SyllabusExtractor import extract_text_from_pdf
 from MTE_data_extractor import extract_data
 from MTE_data_extractor import get_worst
 from MTE_data_extractor import get_CO_Cluster
+from MTE_data_extractor import CO_paper_read
 
 
 aiHandler = handleAI()
@@ -10,6 +11,10 @@ aiHandler = handleAI()
 students = extract_data(
     "data/test.xlsm", "MTE", [6, 176], [4, 6, 8, 10, 12, 14, 16, 18]
 )
+
+mapping = CO_paper_read("data/CA2106_OS__MTE-24.pdf")
+performance = get_worst(students, co_map)
+
 performance = get_worst(students)
 CO_Cluster = get_CO_Cluster(performance)
 pdf_path = "data/CAP6205 Course Handout OS.pdf"
