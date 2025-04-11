@@ -38,6 +38,10 @@ content += (
 )
 content += "add questions of only that co in which the student has secured less than 65 percentage"
 content += "there should be total 8 question divided between diffent sections according to co percentage, there should be more questions of co in which student has performed worst."
+content += "The Questions must either be MCQ or Writting Questions with Keywords."
+content += "The Response must be in JSON format where MCQ and Writting Questions will be two seperate array as root properties."
+content += "Every MCQ object must include the question, 4 options and correct answer as properties. "
+content += "Every Writting Question object must include the question and the list of keywords that will need to be included in the correct answers."
 
 if (
     performance[roll_no][0] > 65

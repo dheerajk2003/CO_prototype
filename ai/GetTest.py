@@ -11,11 +11,13 @@ class Gemini:
         self.client = genai.Client(api_key=os.getenv("GEMINI_KEY"))
         print("[Info] Successfully created Google (Gemini) Client")
 
+    def createChat(self):
+        return self.client.chats.create(model="gemini-2.5-pro-exp-03-25")
 
     def GetTest(self,body):
         res = self.client.models.generate_content(model="gemini-2.5-pro-exp-03-25", contents=str(body))
-        return res.text
-    
+        return res.text.split("```json", 1)[1].rsplit("```", 1)[0]
+      
 class Llama:
     def __init__(self):
         self.client = Groq(api_key=os.getenv("GROQ_KEY"))
@@ -30,7 +32,7 @@ class Llama:
                 ],
                 model="meta-llama/llama-4-scout-17b-16e-instruct",
                 )
-        return res.choices[0].message.content
+        return res.choices[0].message.content.split("```json", 1)[1].rsplit("```", 1)[0]
     
 class GPT:
     def __init__(self):
@@ -43,7 +45,7 @@ class GPT:
             input=str(body)
         )
 
-        return res.output[0].content[0].text
+        return res.output[0].content[0].text.split("```json", 1)[1].rsplit("```", 1)[0]
 
 class DeepSeek:
     def __init__(self):
@@ -55,6 +57,7 @@ class DeepSeek:
             {"role" : "user", "content": str(body)}
         ])
         res = res.choices[0].message.content.rsplit("</think>")
-        testContent = res[-1]
+        
+        testContent = res[-1].split("```json", 1)[1].rsplit("```", 1)[0]
         thinkingData = '\n'.join(res[0:-1]).removeprefix("<think>")
         return (thinkingData, testContent)
